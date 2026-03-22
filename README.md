@@ -15,14 +15,16 @@ Nessa atividade, você deverá montar a página inicial do projeto escolhido, a 
 - Breve descrição sobre seu projeto: desenvolvimento de um site voltado para entreterimento,  a plataforma permitirá que pessoas comentem , avaliem sobre filmes, séries, jogos e animes.
 
 
+
 ## Print do(s) wireframe(s) criado
-> Sugestão, use o Excalidraw para isso. Utilize esse [template básico](https://excalidraw.com/#json=LU-8hwcQEwzk11FwO8Opo,qPU9K6cNUEzlXzwOuKMIlQ) para você começar. 
 
 
-![WhatsApp Image 2026-03-22 at 17 41 44](https://github.com/user-attachments/assets/c2c6cd66-5272-4407-804c-9cef5bf0f8e6)
+![wireframe](https://github.com/user-attachments/assets/7319a0cc-6d9c-4d23-b7e9-f9160640158f)
 
 
 
 ## Print da home-page criada
 
-<<  COLOQUE A IMAGEM AQUI >>
+
+<img width="734" height="418" alt="homepage" src="https://github.com/user-attachments/assets/fa91ac4a-97c3-4959-82aa-db2f5c380937" />
+
