@@ -9,16 +9,17 @@ Nessa atividade, você deverá montar a página inicial do projeto escolhido, a 
 
 ## Informações Gerais
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome:Maryanne Ilha da Luz
+- Matricula:907348
+- Proposta de projeto escolhida:Criar uma plataforma online onde usuários possam compartilhar opiniões sobre filmes, séries, jogos e animes.
+- Breve descrição sobre seu projeto: desenvolvimento de um site voltado para entreterimento,  a plataforma permitirá que pessoas comentem , avaliem sobre filmes, séries, jogos e animes.
 
 
 ## Print do(s) wireframe(s) criado
 > Sugestão, use o Excalidraw para isso. Utilize esse [template básico](https://excalidraw.com/#json=LU-8hwcQEwzk11FwO8Opo,qPU9K6cNUEzlXzwOuKMIlQ) para você começar. 
 
-<<  COLOQUE A IMAGEM AQUI >>
+
+![WhatsApp Image 2026-03-22 at 17 41 44](https://github.com/user-attachments/assets/c2c6cd66-5272-4407-804c-9cef5bf0f8e6)
 
 
 
