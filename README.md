@@ -18,8 +18,8 @@ Nessa atividade, você deverá montar a página inicial do projeto escolhido, a 
 
 ## Print do(s) wireframe(s) criado
 
+<img width="1920" height="1080" alt="fandora (1)" src="https://github.com/user-attachments/assets/92a320a8-7269-4bb3-803a-bb71c9f30f24" />
 
-![wireframe](https://github.com/user-attachments/assets/7319a0cc-6d9c-4d23-b7e9-f9160640158f)
 
 
 
