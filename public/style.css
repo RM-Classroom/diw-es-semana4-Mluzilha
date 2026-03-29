@@ -1,3 +1,391 @@
+
 body {
-    background-color: aquamarine;
+  margin: 0;
+  font-family: Arial;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+
+  background: transparent; /* 👈 ESSENCIAL */
+  position: absolute; /* 👈 fica por cima */
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  z-index: 10;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  width: 40px;
+  overflow: hidden;
+  transition: 0.4s;
+
+  position: relative;
+  z-index: 1;
+}
+
+.search-box i {
+  color: gray;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  width: 40px;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1;
+}
+
+.search-box i {
+  color: gray;
+  flex-shrink: 0;
+}
+
+
+.search-box input {
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
+
+  width: 0;
+  opacity: 0;
+
+  margin-left: 0;
+
+  transition: 0.3s;
+}
+
+
+.search-box:focus-within {
+  width: 220px;
+  box-shadow: 0 0 10px #f5b400;
+}
+
+
+.search-box:focus-within input {
+  width: 100%;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+
+#btnPerfil {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5b400;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 10;
+}
+
+
+#iconePerfil {
+  display: none;
+}
+
+
+#btnPerfil.logado {
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+#btnPerfil.logado #iconePerfil {
+  display: inline;
+}
+
+
+.menu-perfil {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+
+  z-index: 20;
+}
+
+
+.menu-perfil.ativo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+.menu-perfil p {
+  padding: 8px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.menu-perfil p:hover {
+  background: #333;
+}
+
+
+.banner {
+  width: 100vw;
+  height: 500px;
+
+  background-image: url('estrelasss.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  position: relative;
+}
+body {
+  margin: 0;
+}
+.banner {
+  image-rendering: auto;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent),
+              linear-gradient(to top, #0f0f0f, transparent);
+
+  z-index: 1;
+}
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+}
+
+.banner-content {
+  max-width: 400px;
+}
+
+.banner button {
+  background: #f5b400;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.categorias {
+  padding: 15px;
+}
+
+.categorias button {
+  margin: 5px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background: #2a2a2a;
+  color: white;
+}
+
+.categorias .ativo {
+  background: #f5b400;
+  color: black;
+}
+
+
+.filmes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px;
+}
+
+.card p {
+  margin: 0 10px 10px;
+  color: gray;
+}
+
+
+.card button {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.card button.favorito {
+  color: red;
+  transform: scale(1.2);
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 20px;
+  margin: 100px auto;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.fechar {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal-content input {
+  width: 90%;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.modal-content button {
+  background: #f5b400;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+}
+#btnPerfil {
+  margin-right: 10px; /* diminui a distância da direita */
+}
+.detalhe-filme {
+  padding: 20px;
+  text-align: center;
+}
+
+.img-detalhe {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.detalhe-filme button {
+  background: #f5b400;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.banner-filme {
+  width: 100vw;
+  height: 500px;
+
+  background-image: url('estrelasss.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  position: relative;
+}
+
+
+.banner-filme::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent),
+              linear-gradient(to top, #0f0f0f, transparent);
+
+  z-index: 1;
+}
+
+
+.conteudo-filme {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.conteudo-filme h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
 }
