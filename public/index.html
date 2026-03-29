@@ -1,12 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fandora</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fandora</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+   
+    .menu-perfil {
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      background: #1a1a1a;
+      padding: 10px;
+      border-radius: 10px;
+      width: 150px;
+
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+
+      transition: all 0.3s ease;
+    }
+
+    .menu-perfil.ativo {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .menu-perfil p {
+      padding: 8px;
+      margin: 0;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .menu-perfil p:hover {
+      background: #333;
+    }
+
+
+    #btnPerfil.logado {
+      background: none;
+      color: white;
+      font-size: 18px;
+    }
+
+
+    .favorito {
+      color: red;
+      transform: scale(1.2);
+    }
+  </style>
 </head>
+
 <body>
-    
+
+
+<header class="navbar">
+  <h1>🎬 Fandora</h1>
+
+  <div class="search-box">
+    <i class="fa fa-search"></i>
+    <input type="text" placeholder="Buscar filmes...">
+  </div>
+
+  <button onclick="abrirLogin()" id="btnPerfil">
+    <i id="iconePerfil" class="fa fa-user"></i>
+    <span id="textoPerfil">Entrar</span>
+  </button>
+
+
+  <div id="menuPerfil" class="menu-perfil">
+    <p onclick="irPerfil()">Perfil</p>
+    <p onclick="logout()">Sair</p>
+  </div>
+</header>
+
+
+<section class="banner">
+  <div class="banner-content">
+    <h2>Devoradores de Estrelas</h2>
+    <p>Uma aventura no espaço...</p>
+   <button onclick="verDetalhes()">Ver Detalhes</button>
+  </div>
+</section>
+
+
+<section class="filmes">
+
+  <div class="card">
+    <img src="img1.jpg">
+    <h3>Matrix</h3>
+    <p>1999 • Ficção Científica</p>
+    <button onclick="toggleFavorito(this, 'Matrix')">🤍</button>
+  </div>
+
+  <div class="card">
+    <img src="img2.jpg">
+    <h3>Meninas Malvadas</h3>
+    <p>2004 • Comédia</p>
+    <button onclick="toggleFavorito(this, 'Meninas Malvadas')">🤍</button>
+  </div>
+
+</section>
+
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+
+    <span class="fechar" onclick="fecharLogin()">&times;</span>
+
+ 
+    <div id="loginBox">
+      <h2>Entrar</h2>
+      <input type="text" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginSenha" placeholder="Senha">
+      <button onclick="login()">Login</button>
+      <p>Não tem conta? <a href="#" onclick="mostrarCadastro()">Criar conta</a></p>
+    </div>
+
+
+    <div id="cadastro" style="display:none;">
+      <h2>Criar Conta</h2>
+      <input type="text" id="novoNome" placeholder="Seu nome">
+      <input type="text" id="novoEmail" placeholder="Email">
+      <input type="password" id="novaSenha" placeholder="Senha">
+      <button onclick="cadastrar()">Cadastrar</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+
+function abrirLogin() {
+  document.getElementById("loginModal").style.display = "block";
+}
+
+function fecharLogin() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+
+function mostrarCadastro() {
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("cadastro").style.display = "block";
+}
+
+
+function cadastrar() {
+  let nome = document.getElementById("novoNome").value;
+  let email = document.getElementById("novoEmail").value;
+  let senha = document.getElementById("novaSenha").value;
+
+  localStorage.setItem("nome", nome);
+  localStorage.setItem("usuario", email);
+  localStorage.setItem("senha", senha);
+  localStorage.setItem("logado", email);
+
+  atualizarNavbar();
+  fecharLogin();
+
+  document.getElementById("cadastro").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+}
+
+
+function login() {
+  let email = document.getElementById("loginEmail").value;
+  let senha = document.getElementById("loginSenha").value;
+
+  let emailSalvo = localStorage.getItem("usuario");
+  let senhaSalva = localStorage.getItem("senha");
+
+  if(email === emailSalvo && senha === senhaSalva){
+    localStorage.setItem("logado", email);
+    atualizarNavbar();
+    fecharLogin();
+  } else {
+    alert("Email ou senha incorretos");
+  }
+}
+
+
+function atualizarNavbar() {
+  let usuario = localStorage.getItem("logado");
+  let nome = localStorage.getItem("nome");
+
+  let botao = document.getElementById("btnPerfil");
+  let texto = document.getElementById("textoPerfil");
+
+  
+  botao.onclick = null;
+
+  if(usuario){
+    texto.innerText = "Olá, " + nome;
+    botao.onclick = toggleMenu;
+    botao.classList.add("logado");
+  } else {
+    texto.innerText = "Entrar";
+    botao.onclick = abrirLogin;
+    botao.classList.remove("logado");
+  }
+}
+
+
+function logout() {
+  localStorage.removeItem("logado");
+
+  let menu = document.getElementById("menuPerfil");
+  let botao = document.getElementById("btnPerfil");
+
+  menu.classList.remove("ativo");
+  botao.classList.remove("aberto");
+
+  atualizarNavbar();
+}
+
+
+function toggleMenu() {
+  let menu = document.getElementById("menuPerfil");
+  let botao = document.getElementById("btnPerfil");
+
+  menu.classList.toggle("ativo");
+  botao.classList.toggle("aberto");
+}
+
+
+function toggleFavorito(botao, filme) {
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+  if (favoritos.includes(filme)) {
+    favoritos = favoritos.filter(f => f !== filme);
+    botao.classList.remove("favorito");
+    botao.innerText = "🤍";
+  } else {
+    favoritos.push(filme);
+    botao.classList.add("favorito");
+    botao.innerText = "❤️";
+  }
+
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+}
+
+
+window.onload = function () {
+  atualizarNavbar();
+
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+  document.querySelectorAll(".card").forEach(card => {
+    let nome = card.querySelector("h3").innerText;
+    let botao = card.querySelector("button");
+
+    if (favoritos.includes(nome)) {
+      botao.classList.add("favorito");
+      botao.innerText = "❤️";
+    }
+  });
+};
+
+
+function irPerfil() {
+  window.location.href = "perfil.html";
+}
+function verDetalhes() {
+  window.location.href = "filme.html";
+}
+</script>
+
 </body>
 </html>
