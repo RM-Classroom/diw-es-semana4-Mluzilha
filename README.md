@@ -25,7 +25,7 @@ Nessa atividade, você deverá montar a página inicial do projeto escolhido, a 
 
 ## Print da home-page criada
 
-![Uploading Captura de Tela 2026-03-29 às 20.36.46.png…]()
 
+<img width="1413" height="641" alt="home page" src="https://github.com/user-attachments/assets/19537c5c-6372-4332-b87c-2bf57cba9988" />
 
 
