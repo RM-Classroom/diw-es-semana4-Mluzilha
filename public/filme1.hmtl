@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devorador de Estrelas</title>
 
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section class="banner-filme">
+
+    <button class="btn-voltar" onclick="voltar()">←</button>
+
+    <div class="conteudo-filme">
+      <h1>Devorador de Estrelas</h1>
+
+      <p>
+        Uma aventura épica no espaço onde um astronauta enfrenta o desconhecido
+        para salvar a humanidade.
+      </p>
+
+      <button id="btnFav" onclick="toggleFavorito()">🤍 Favoritar</button>
+    </div>
+
+  </section>
+
+  <section class="info-filme">
+
+    <h2>Sobre o filme</h2>
+
+    <p>
+      A história de Devoradores de Estrelas acompanha Ryland Grace, um professor de ciências que acorda em uma nave espacial sem memória de sua identidade ou da missão. Ele descobre que a Terra enfrenta uma extinção iminente porque o Sol está sendo "devorado" por organismos alienígenas chamados Astrófagos, que consomem energia solar e resfriam o planeta. A nave Hail Mary é a última esperança da humanidade, enviada ao sistema de Tau Ceti para investigar por que aquela estrela é a única na vizinhança que não foi afetada pela praga.
+
+Durante a exploração, Grace descobre que não é o único ser inteligente em busca de respostas e encontra uma nave do sistema 40 Eridani. Ele estabelece contato com Rocky, um alienígena com aparência de uma aranha rochosa que se comunica através de sons musicais. Como os dois são engenhosos e enfrentam o mesmo problema de extinção em seus respectivos planetas, eles formam uma aliança improvável, utilizando princípios fundamentais de física e química para superar a barreira da linguagem e trabalhar em uma solução científica.
+
+A dupla descobre o Taumoeba, um micro-organismo que atua como predador natural dos Astrófagos, e consegue cultivá-lo para salvar suas estrelas. No clímax, após enviar as amostras de volta para a Terra via naves automáticas, Grace percebe que Rocky corre perigo de vida devido a uma falha técnica. Em um ato de sacrifício final, o cientista desiste de sua única chance de voltar para casa para salvar o amigo. O desfecho mostra Grace vivendo no planeta de Rocky, onde se torna professor para a raça alienígena e recebe a confirmação de que o Sol recuperou seu brilho original, garantindo a sobrevivência da raça humana.
+    </p>
+
+
+
+    <div class="imagens-filme">
+      <img src="dev1.jpg">
+      <img src="dev2.jpg">
+      <img src="dev3.jpg">
+    </div>
+
+
+    <h3>🎬 Autor / Criador</h3>
+
+    <div class="autor-container">
+      <img src="autordev.jpg" alt="Autor">
+
+      <div class="autor-info">
+        <p>Andy Weir</p>
+
+      </div>
+    </div>
+
+
+    <h3>🎭 Elenco</h3>
+
+    <div class="elenco">
+
+      <div class="ator">
+        <img src="ator1.jpg">
+        <p>Ryan Gosling</p>
+      </div>
+
+      <div class="ator">
+        <img src="ator2.jpg">
+        <p>Sandra Hüller</p>
+      </div>
+
+      <div class="ator">
+        <img src="ator3.jpg">
+        <p>James Ortiz</p>
+         
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    const filme = "Devorador de Estrelas";
+
+    function voltar() {
+      window.history.back();
+    }
+
+    function toggleFavorito() {
+      let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+      let botao = document.getElementById("btnFav");
+
+      if (favoritos.includes(filme)) {
+        favoritos = favoritos.filter(f => f !== filme);
+        botao.innerText = "🤍 Favoritar";
+      } else {
+        favoritos.push(filme);
+        botao.innerText = "❤️ Favoritado";
+
+        botao.style.transform = "scale(1.3)";
+        setTimeout(() => {
+          botao.style.transform = "scale(1)";
+        }, 200);
+      }
+
+      localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    }
+
+    window.onload = function () {
+      let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+      let botao = document.getElementById("btnFav");
+
+      if (favoritos.includes(filme)) {
+        botao.innerText = "❤️ Favoritado";
+      }
+    };
+  </script>
+
+</body>
+</html>
