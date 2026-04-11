@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial;
+      margin: 0;
+    }
+
+    .perfil {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .perfil h1 {
+      font-size: 28px;
+    }
+
+    .perfil p {
+      color: gray;
+    }
+
+    .perfil button {
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #f5b400;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="perfil">
+  <h1 id="nome"></h1>
+  <p id="email"></p>
+  <h2>⭐ Meus Favoritos</h2>
+<ul id="listaFavoritos"></ul>
+
+  <button onclick="logout()">Sair</button>
+</div>
+
+<script>
+let nome = localStorage.getItem("nome");
+let email = localStorage.getItem("usuario");
+
+
+document.getElementById("nome").innerText = nome;
+document.getElementById("email").innerText = email;
+
+function logout() {
+  localStorage.removeItem("logado");
+  window.location.href = "index.html";
+}
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+let lista = document.getElementById("listaFavoritos");
+
+favoritos.forEach(filme => {
+  let item = document.createElement("li");
+  item.innerText = filme;
+  lista.appendChild(item);
+});
+</script>
+
+</body>
+</html>
